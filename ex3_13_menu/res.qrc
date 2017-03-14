@@ -1,1 +1,9 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>qtEditIcon/copy.png</file>
+        <file>qtEditIcon/cut.png</file>
+        <file>qtEditIcon/save.png</file>
+        <file>qtEditIcon/text.png</file>
+        <file>qtEditIcon/beautify_letter_background.jpg</file>
+    </qresource>
+</RCC>

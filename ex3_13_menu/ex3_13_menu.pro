@@ -18,3 +18,12 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES += \
+    qtEditIcon/copy.png \
+    qtEditIcon/cut.png \
+    qtEditIcon/save.png \
+    qtEditIcon/text.png
+
+RESOURCES += \
+    res.qrc

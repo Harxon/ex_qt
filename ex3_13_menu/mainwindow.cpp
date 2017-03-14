@@ -17,6 +17,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->actionPaste, SIGNAL(triggered(bool)), ui->textEdit, SLOT(paste()));
     QObject::connect(ui->actionSelectAll, SIGNAL(triggered(bool)), ui->textEdit, SLOT(selectAll()));
 
+    QObject::connect(ui->actionSetFont_T, SIGNAL(triggered(bool)), this, SLOT(setFontSlot()));
+    QObject::connect(ui->actionSetColor, SIGNAL(triggered(bool)), this, SLOT(setColorSlot()));
+
+    QObject::connect(ui->actionSetDateTime_D, SIGNAL(triggered(bool)), this, SLOT(setDataTimeSlot()));
+
 }
 
 MainWindow::~MainWindow()
@@ -71,4 +76,43 @@ void MainWindow::saveFileSlot(){
         QMessageBox::information(this, "saveFile", "Can't open the savefile");
         return;
     }
+}
+
+void MainWindow::setFontSlot(){
+    /*
+     *   bool ok;
+         QFont font = QFontDialog::getFon(&ok, QFont("Helvetica [Cronyx]", 10), this);
+  if (ok) {
+      // the user clicked OK and font is set to the font the user selected
+  } else {
+      // the user canceled the dialog; font is set to the initial
+      // value, in this case Helvetica [Cronyx], 10
+  }
+     */
+    bool ok;
+    //QFont font = QFontDialog::getFont(&ok, QFont("Helvetica [Cronyx]", 14), this);
+    QFont font = QFontDialog::getFont(&ok, QFont("Timess", 14), this);
+    if(ok){
+        ui->textEdit->setFont(font);
+    }else{
+        QMessageBox::information(this, "Error", "setFont failed");
+        return;
+    }
+}
+
+void MainWindow::setColorSlot(){
+    //QColor color = QColorDialog::getColor(Qt::blue, this, "setColor", QColorDialog::ColorDialogOption());
+    QColor color = QColorDialog::getColor(Qt::blue, this);
+    if(color.isValid()){
+      ui->textEdit->setTextColor(color);
+    }else{
+      QMessageBox::information(this, "Error", "setColor failed");
+      return;
+    }
+}
+
+void MainWindow::setDataTimeSlot(){
+    QDateTime time(QDateTime::currentDateTime());
+    QString timeText(time.toString("HH:mm:ss yyyy.MM.dd"));
+    ui->textEdit->append(timeText);
 }

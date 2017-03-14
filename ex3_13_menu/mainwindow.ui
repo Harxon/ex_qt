@@ -19,9 +19,12 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>431</width>
-      <height>281</height>
+      <width>401</width>
+      <height>271</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/prefix1/qtEditIcon/beautify_letter_background.jpg);</string>
     </property>
    </widget>
   </widget>
@@ -54,6 +57,9 @@
     <addaction name="actionCopy"/>
     <addaction name="actionPaste"/>
     <addaction name="actionSelectAll"/>
+    <addaction name="actionSetFont_T"/>
+    <addaction name="actionSetColor"/>
+    <addaction name="actionSetDateTime_D"/>
    </widget>
    <addaction name="menuFILE"/>
    <addaction name="menuEDIT"/>
@@ -65,6 +71,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSAVE_FILE_S"/>
+   <addaction name="actionCopy"/>
+   <addaction name="actionSelect"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNEW_FILE">
@@ -78,6 +87,10 @@
    </property>
   </action>
   <action name="actionSAVE_FILE_S">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/qtEditIcon/save.png</normaloff>:/new/prefix1/qtEditIcon/save.png</iconset>
+   </property>
    <property name="text">
     <string>SAVE FILE(&amp;S)</string>
    </property>
@@ -98,11 +111,19 @@
    </property>
   </action>
   <action name="actionSelect">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/qtEditIcon/cut.png</normaloff>:/new/prefix1/qtEditIcon/cut.png</iconset>
+   </property>
    <property name="text">
     <string>Cut(&amp;X)</string>
    </property>
   </action>
   <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/qtEditIcon/copy.png</normaloff>:/new/prefix1/qtEditIcon/copy.png</iconset>
+   </property>
    <property name="text">
     <string>Copy(&amp;C)</string>
    </property>
@@ -117,8 +138,25 @@
     <string>SelectAll(&amp;A)</string>
    </property>
   </action>
+  <action name="actionSetFont_T">
+   <property name="text">
+    <string>SetFont(&amp;T)</string>
+   </property>
+  </action>
+  <action name="actionSetColor">
+   <property name="text">
+    <string>SetColor(&amp;C)</string>
+   </property>
+  </action>
+  <action name="actionSetDateTime_D">
+   <property name="text">
+    <string>SetDateTime(&amp;D)</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
