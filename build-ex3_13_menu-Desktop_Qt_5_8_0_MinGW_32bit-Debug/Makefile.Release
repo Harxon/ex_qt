@@ -17,13 +17,13 @@ CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -std=gnu++11 -frtti -Wall -
 INCPATH       = -I..\ex3_13_menu -I. -IC:\Qt\Qt5.8.0\5.8\mingw53_32\include -IC:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtWidgets -IC:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtGui -IC:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtANGLE -IC:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtCore -Irelease -I. -IC:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LC:\Qt\Qt5.8.0\5.8\mingw53_32\lib C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libqtmain.a -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib -lshell32 C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Widgets.a C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Gui.a C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Core.a 
+LIBS        =        -lmingw32 -LC:\Qt\Qt5.8.0\5.8\mingw53_32\lib C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libqtmain.a -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib -lshell32 C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Widgets.a C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Gui.a C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Core.a release\thisApp_res.o 
 QMAKE         = C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\thisApp_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -54,7 +54,8 @@ OBJECTS       = release/main.o \
 DIST          = qtEditIcon/copy.png \
 		qtEditIcon/cut.png \
 		qtEditIcon/save.png \
-		qtEditIcon/text.png ..\ex3_13_menu\mainwindow.h ..\ex3_13_menu\main.cpp \
+		qtEditIcon/text.png \
+		thisApp.rc ..\ex3_13_menu\mainwindow.h ..\ex3_13_menu\main.cpp \
 		..\ex3_13_menu\mainwindow.cpp
 QMAKE_TARGET  = ex3_13_menu
 DESTDIR        = release\ #avoid trailing-slash linebreak
@@ -66,8 +67,11 @@ DESTDIR_TARGET = release\ex3_13_menu.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) release/thisApp_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+
+release/thisApp_res.o: ../ex3_13_menu/thisApp.rc
+	windres -i ..\ex3_13_menu\thisApp.rc -o release\thisApp_res.o --include-dir=./../ex3_13_menu $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\ex3_13_menu\ex3_13_menu.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -79,6 +83,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.o release\mainwindow.o release\qrc_res.o release\moc_mainwindow.o
+	-$(DEL_FILE) release\thisApp_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -100,6 +105,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_res.cpp
 release/qrc_res.cpp: ../ex3_13_menu/res.qrc \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/rcc.exe \
+		../ex3_13_menu/qtEditIcon/beautify_letter_background.jpg \
 		../ex3_13_menu/qtEditIcon/save.png \
 		../ex3_13_menu/qtEditIcon/cut.png \
 		../ex3_13_menu/qtEditIcon/text.png \

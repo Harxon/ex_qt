@@ -23,7 +23,10 @@ DISTFILES += \
     qtEditIcon/copy.png \
     qtEditIcon/cut.png \
     qtEditIcon/save.png \
-    qtEditIcon/text.png
+    qtEditIcon/text.png \
+    thisApp.rc
 
 RESOURCES += \
     res.qrc
+
+RC_FILE = thisApp.rc
