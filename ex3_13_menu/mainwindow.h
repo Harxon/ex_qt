@@ -15,6 +15,8 @@
 #include <QUrl>
 #include <QDesktopServices>
 #include <warningdialog.h>
+#include <QMessageBox>
+#include <QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -33,12 +35,14 @@ private:
 private slots:
     void newFileSlot();
     void openFileSlot();
-    void saveFileSlot();
+    bool saveFileSlot();
     void setFontSlot();
     void setColorSlot();
     void setDataTimeSlot();
     void openOfficialWebsite();
     void openWarningDialog();
+protected:
+    void closeEvent(QCloseEvent*);
 };
 
 #endif // MAINWINDOW_H

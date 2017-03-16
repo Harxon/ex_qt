@@ -62,11 +62,11 @@ void MainWindow::openFileSlot(){
     }
 }
 
-void MainWindow::saveFileSlot(){
+bool MainWindow::saveFileSlot(){
     QString name = QFileDialog::getSaveFileName(this, "saveFileName", QDir::currentPath());
     if(name.isEmpty()){
         QMessageBox::information(this, "Save File", "Can't save file, something is wrong");
-        return;
+        return false;
     }else{}
     QFile* file = new QFile;
     file->setFileName(name);
@@ -78,8 +78,10 @@ void MainWindow::saveFileSlot(){
         delete file;
     }else{
         QMessageBox::information(this, "saveFile", "Can't open the savefile");
-        return;
+        return false;
     }
+
+    return true;
 }
 
 void MainWindow::setFontSlot(){
@@ -130,3 +132,39 @@ void MainWindow::openWarningDialog(){
     WarningDialog* dialog = new WarningDialog;
     dialog->show();
 }
+
+void MainWindow::closeEvent(QCloseEvent *event)
+  {
+      if (ui->textEdit->document()->isModified()) {
+          event->accept();
+          QMessageBox msgBox;
+           msgBox.setText("The document has been modified.");
+           msgBox.setInformativeText("Do you want to save your changes?");
+           msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+           msgBox.setDefaultButton(QMessageBox::Save);
+           int ret = msgBox.exec();
+           switch (ret) {
+              case QMessageBox::Save:
+                  // Save was clicked
+               if(!this->saveFileSlot()){
+                event->ignore();
+               }
+                  break;
+              case QMessageBox::Discard:
+                  // Don't Save was clicked
+                ui->textEdit->clear();
+                event->accept();
+                  break;
+              case QMessageBox::Cancel:
+                  // Cancel was clicked
+               event->ignore();
+                  break;
+              default:
+                  // should never be reached
+               event->accept();
+                  break;
+            }
+      } else {
+          event->accept();
+      }
+  }

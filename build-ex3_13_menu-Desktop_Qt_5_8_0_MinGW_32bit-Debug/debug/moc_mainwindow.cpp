@@ -76,7 +76,7 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -94,7 +94,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->newFileSlot(); break;
         case 1: _t->openFileSlot(); break;
-        case 2: _t->saveFileSlot(); break;
+        case 2: { bool _r = _t->saveFileSlot();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 3: _t->setFontSlot(); break;
         case 4: _t->setColorSlot(); break;
         case 5: _t->setDataTimeSlot(); break;
@@ -103,7 +104,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject MainWindow::staticMetaObject = {
