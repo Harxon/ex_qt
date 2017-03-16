@@ -2,6 +2,9 @@
 #define WARNINGDIALOG_H
 
 #include <QDialog>
+#include <QMovie>
+#include <QAbstractButton>
+#include <QDebug>
 
 namespace Ui {
 class WarningDialog;
@@ -17,6 +20,10 @@ public:
 
 private:
     Ui::WarningDialog *ui;
+    QMovie* movie;
+private slots:
+    void startGif();
+    void stopGif();
 };
 
 #endif // WARNINGDIALOG_H
