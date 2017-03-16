@@ -61,8 +61,17 @@
     <addaction name="actionSetColor"/>
     <addaction name="actionSetDateTime_D"/>
    </widget>
+   <widget class="QMenu" name="menuHELP">
+    <property name="title">
+     <string>HELP</string>
+    </property>
+    <addaction name="actionAbout_Qt"/>
+    <addaction name="actionOfficialWebsite_W"/>
+    <addaction name="actionLICENSE_L"/>
+   </widget>
    <addaction name="menuFILE"/>
    <addaction name="menuEDIT"/>
+   <addaction name="menuHELP"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -151,6 +160,21 @@
   <action name="actionSetDateTime_D">
    <property name="text">
     <string>SetDateTime(&amp;D)</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt(&amp;Q)</string>
+   </property>
+  </action>
+  <action name="actionOfficialWebsite_W">
+   <property name="text">
+    <string>OfficialWebsite(&amp;W)</string>
+   </property>
+  </action>
+  <action name="actionLICENSE_L">
+   <property name="text">
+    <string>LICENSE(&amp;L)</string>
    </property>
   </action>
  </widget>

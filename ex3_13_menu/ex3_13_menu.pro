@@ -13,11 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    warningdialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    warningdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    warningdialog.ui
 
 DISTFILES += \
     qtEditIcon/copy.png \

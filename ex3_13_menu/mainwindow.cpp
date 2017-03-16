@@ -22,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(ui->actionSetDateTime_D, SIGNAL(triggered(bool)), this, SLOT(setDataTimeSlot()));
 
+    QObject::connect(ui->actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt()));
+    QObject::connect(ui->actionOfficialWebsite_W, SIGNAL(triggered(bool)), this, SLOT(openOfficialWebsite()));
+    QObject::connect(ui->actionLICENSE_L, SIGNAL(triggered(bool)), this, SLOT(openWarningDialog()));
+
 }
 
 MainWindow::~MainWindow()
@@ -115,4 +119,14 @@ void MainWindow::setDataTimeSlot(){
     QDateTime time(QDateTime::currentDateTime());
     QString timeText(time.toString("HH:mm:ss yyyy.MM.dd"));
     ui->textEdit->append(timeText);
+}
+
+void MainWindow::openOfficialWebsite(){
+
+    QDesktopServices::openUrl(QUrl("https://www.qt.io/"));
+}
+
+void MainWindow::openWarningDialog(){
+    WarningDialog* dialog = new WarningDialog;
+    dialog->show();
 }

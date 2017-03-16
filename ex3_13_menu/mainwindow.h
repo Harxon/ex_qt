@@ -12,6 +12,9 @@
 #include <QColorDialog>
 #include <QDateTime>
 #include <unistd.h>
+#include <QUrl>
+#include <QDesktopServices>
+#include <warningdialog.h>
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +37,8 @@ private slots:
     void setFontSlot();
     void setColorSlot();
     void setDataTimeSlot();
+    void openOfficialWebsite();
+    void openWarningDialog();
 };
 
 #endif // MAINWINDOW_H

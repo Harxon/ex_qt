@@ -40,11 +40,15 @@ public:
     QAction *actionSetFont_T;
     QAction *actionSetColor;
     QAction *actionSetDateTime_D;
+    QAction *actionAbout_Qt;
+    QAction *actionOfficialWebsite_W;
+    QAction *actionLICENSE_L;
     QWidget *centralWidget;
     QTextEdit *textEdit;
     QMenuBar *menuBar;
     QMenu *menuFILE;
     QMenu *menuEDIT;
+    QMenu *menuHELP;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -88,6 +92,12 @@ public:
         actionSetColor->setObjectName(QStringLiteral("actionSetColor"));
         actionSetDateTime_D = new QAction(MainWindow);
         actionSetDateTime_D->setObjectName(QStringLiteral("actionSetDateTime_D"));
+        actionAbout_Qt = new QAction(MainWindow);
+        actionAbout_Qt->setObjectName(QStringLiteral("actionAbout_Qt"));
+        actionOfficialWebsite_W = new QAction(MainWindow);
+        actionOfficialWebsite_W->setObjectName(QStringLiteral("actionOfficialWebsite_W"));
+        actionLICENSE_L = new QAction(MainWindow);
+        actionLICENSE_L->setObjectName(QStringLiteral("actionLICENSE_L"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         textEdit = new QTextEdit(centralWidget);
@@ -102,6 +112,8 @@ public:
         menuFILE->setObjectName(QStringLiteral("menuFILE"));
         menuEDIT = new QMenu(menuBar);
         menuEDIT->setObjectName(QStringLiteral("menuEDIT"));
+        menuHELP = new QMenu(menuBar);
+        menuHELP->setObjectName(QStringLiteral("menuHELP"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -112,6 +124,7 @@ public:
 
         menuBar->addAction(menuFILE->menuAction());
         menuBar->addAction(menuEDIT->menuAction());
+        menuBar->addAction(menuHELP->menuAction());
         menuFILE->addAction(actionNEW_FILE);
         menuFILE->addAction(actionOPEN_FILE_O);
         menuFILE->addAction(actionSAVE_FILE_S);
@@ -126,6 +139,9 @@ public:
         menuEDIT->addAction(actionSetFont_T);
         menuEDIT->addAction(actionSetColor);
         menuEDIT->addAction(actionSetDateTime_D);
+        menuHELP->addAction(actionAbout_Qt);
+        menuHELP->addAction(actionOfficialWebsite_W);
+        menuHELP->addAction(actionLICENSE_L);
         mainToolBar->addAction(actionSAVE_FILE_S);
         mainToolBar->addAction(actionCopy);
         mainToolBar->addAction(actionSelect);
@@ -151,8 +167,12 @@ public:
         actionSetFont_T->setText(QApplication::translate("MainWindow", "SetFont(&T)", Q_NULLPTR));
         actionSetColor->setText(QApplication::translate("MainWindow", "SetColor(&C)", Q_NULLPTR));
         actionSetDateTime_D->setText(QApplication::translate("MainWindow", "SetDateTime(&D)", Q_NULLPTR));
+        actionAbout_Qt->setText(QApplication::translate("MainWindow", "About Qt(&Q)", Q_NULLPTR));
+        actionOfficialWebsite_W->setText(QApplication::translate("MainWindow", "OfficialWebsite(&W)", Q_NULLPTR));
+        actionLICENSE_L->setText(QApplication::translate("MainWindow", "LICENSE(&L)", Q_NULLPTR));
         menuFILE->setTitle(QApplication::translate("MainWindow", "FILE", Q_NULLPTR));
         menuEDIT->setTitle(QApplication::translate("MainWindow", "EDIT", Q_NULLPTR));
+        menuHELP->setTitle(QApplication::translate("MainWindow", "HELP", Q_NULLPTR));
     } // retranslateUi
 
 };
