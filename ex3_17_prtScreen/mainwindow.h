@@ -27,7 +27,7 @@ public:
     ~MainWindow();
 
 protected:
-    void contextMenuEvent(QContextMenuEvent *event);
+    void contextMenuEvent(QContextMenuEvent* event);
 private:
     Ui::MainWindow *ui;
     QTimer* timer;
