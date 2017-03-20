@@ -34,15 +34,15 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QGroupBox *groupBox;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QCheckBox *checkBox;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_3;
     QDialogButtonBox *buttonBox;
     QPushButton *pushButtonSave;
@@ -57,25 +57,26 @@ public:
         MainWindow->resize(487, 394);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 0, 381, 341));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(40, 0, 381, 341));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
+        label->setMinimumSize(QSize(379, 0));
 
         verticalLayout->addWidget(label);
 
-        groupBox = new QGroupBox(widget);
+        groupBox = new QGroupBox(layoutWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        widget1 = new QWidget(groupBox);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(30, 10, 119, 22));
-        horizontalLayout = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(groupBox);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(30, 10, 119, 22));
+        horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -84,26 +85,26 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        checkBox = new QCheckBox(widget1);
+        checkBox = new QCheckBox(layoutWidget1);
         checkBox->setObjectName(QStringLiteral("checkBox"));
 
         horizontalLayout->addWidget(checkBox);
 
-        widget2 = new QWidget(groupBox);
-        widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(10, 60, 239, 25));
-        horizontalLayout_3 = new QHBoxLayout(widget2);
+        layoutWidget2 = new QWidget(groupBox);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(10, 60, 239, 25));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        buttonBox = new QDialogButtonBox(widget2);
+        buttonBox = new QDialogButtonBox(layoutWidget2);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
         horizontalLayout_3->addWidget(buttonBox);
 
-        pushButtonSave = new QPushButton(widget2);
+        pushButtonSave = new QPushButton(layoutWidget2);
         pushButtonSave->setObjectName(QStringLiteral("pushButtonSave"));
 
         horizontalLayout_3->addWidget(pushButtonSave);
