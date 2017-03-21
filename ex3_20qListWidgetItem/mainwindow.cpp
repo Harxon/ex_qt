@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButtonAdd, SIGNAL(clicked(bool)), this, SLOT(addCityItemSlot()));
     connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(addCityItemSlot()));
     connect(ui->pushButtonDeleteAll, SIGNAL(clicked(bool)), this, SLOT(deleteCiteItemAllSlot()));
+    connect(ui->pushButtonShowDirectory, SIGNAL(clicked(bool)), this, SLOT(showDirectoryFileSlot()));
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +24,7 @@ void MainWindow::addCityItemSlot(){
     ui->listWidget->addItem(itemp);
     ui->lineEdit->clear();
 }
+
 void MainWindow::deleteCiteItemAllSlot(){
     QListWidgetItem* itemp_left;
     int row = 0;
@@ -34,5 +36,17 @@ void MainWindow::deleteCiteItemAllSlot(){
             break;
         }
     };
+}
 
+void MainWindow::showDirectoryFileSlot(){
+
+    QStringList files = QDir::current().entryList();
+
+    ui->listWidget->clear();
+
+    for(int i=0; i<files.size(); i++){
+        QListWidgetItem* tp = new QListWidgetItem;
+        tp->setText(files.at(i));
+        ui->listWidget->addItem(tp);
+    }
 }

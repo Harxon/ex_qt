@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QListWidget>
 #include <QListWidgetItem>
+#include <QStringList>
+#include <QFileDialog>
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +25,7 @@ private:
 private slots:
     void addCityItemSlot();
     void deleteCiteItemAllSlot();
+    void showDirectoryFileSlot();
 };
 
 #endif // MAINWINDOW_H
